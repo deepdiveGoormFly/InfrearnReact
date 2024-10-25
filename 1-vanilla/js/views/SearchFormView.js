@@ -25,6 +25,9 @@ export default class SearchFormView extends View {
     }
 
     handleKeyUp() {
-        console.log(tag, "handleKeyUp");
+        // console.log(tag, "handleKeyUp");
+        console.log(tag, "handleKeyUp", this.inputElement.value);
+        const {value} = this.inputElement;
+        this.showResetButton(value.length > 0);
     }
 }
