@@ -31,8 +31,7 @@ export default class Controller {
     // x버튼 클릭 시 검색 결과도 없애야 함
     this.store.searchKeyword = "";
     this.store.searchResult = [];
-    this.searchResultView.hide();
-    this.tabView.show();
+    this.render();
   }
 
   render() {
