@@ -30,7 +30,7 @@ export default class TabView extends View{
 class Template {
     getTabList() {
         return `
-            <ul>${Object.values(TapType)
+            <ul class="tabs">${Object.values(TapType)
                 .map(tabType => ({tabType, tabLabel: TabLabel[tabType]}))
                 .map(this._getTab)
                 .join("")}
