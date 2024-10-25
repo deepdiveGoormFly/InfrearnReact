@@ -21,10 +21,20 @@ export default class Controller {
     console.log(tag, keyword);
     // TODO 검색 결과를 위한 view를 만들 때 추가
     this.store.search(keyword);
+    this.render();
   }
 
   reset() {
     console.log(tag, "reset");
     
+  }
+
+  render() {
+    // controller가 관리하는 view를 이용해 화면에 출력하는 기능
+    if (this.store.searchKeyword.length > 0) {
+      this.searchResultView.show(this.store.searchResult);
+      return ;
+    }
+    this.searchResultView.hide();
   }
 }
