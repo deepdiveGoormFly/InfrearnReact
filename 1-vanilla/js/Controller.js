@@ -21,7 +21,7 @@ export default class Controller {
   }
 
   reset() {
-    console.log(tag);
+    console.log(tag, "reset");
     
   }
 }

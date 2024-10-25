@@ -32,6 +32,9 @@ export default class SearchFormView extends View {
         const {value} = this.inputElement;
         this.showResetButton(value.length > 0);
         // todo
+        if (value.length <= 0) {
+            this.handleReset();
+        }
     }
 
     handleSubmit(event) {
