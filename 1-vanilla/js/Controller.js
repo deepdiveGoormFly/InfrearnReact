@@ -20,6 +20,7 @@ export default class Controller {
   search(keyword) {
     console.log(tag, keyword);
     // TODO 검색 결과를 위한 view를 만들 때 추가
+    this.store.search(keyword);
   }
 
   reset() {
