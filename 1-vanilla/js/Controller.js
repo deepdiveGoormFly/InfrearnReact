@@ -12,6 +12,8 @@ export default class Controller {
 
   subscribeViewEvents() {
     this.searchFormView.on("@submit", event => this.search(event.detail.value));
+    this.searchFormView.on("@reset", event => this.search(""));
+    // todo
   }
 
   search(keyword) {
