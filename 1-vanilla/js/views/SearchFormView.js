@@ -1,5 +1,7 @@
 import View from "./View.js";
-import {qs} from "../helpers.js";
+import {on, qs} from "../helpers.js";
+
+const tag = "[SearchFormView]";
 
 export default class SearchFormView extends View {
     constructor() {
@@ -7,13 +9,22 @@ export default class SearchFormView extends View {
         // 갖고온 element
         console.log("this",this);
 
-        // this.element에서 type=reset인 것을 this.resetElement로 랩핑하고 값을 가진다
+        this.inputElement = qs("[type=text]", this.element);
         this.resetElement = qs("[type=reset]", this.element);
-        // resetElement의 값을 visible option으로 관리해서 보여지고 안보여지고를 구분하게끔 한다.
+
         this.showResetButton(false);
+        this.bindEvent();
     }
 
     showResetButton(visible = true) {
         this.resetElement.style.display = visible ? "block" : "none";
+    }
+
+    bindEvent() {
+        on(this.inputElement, "keyup", () => this.handleKeyUp());
+    }
+
+    handleKeyUp() {
+        console.log(tag, "handleKeyUp");
     }
 }
