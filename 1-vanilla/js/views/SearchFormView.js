@@ -1,9 +1,9 @@
-import View from "./View";
-import {qs} from "../helpers";
+import View from "./View.js";
+import {qs} from "../helpers.js";
 
 export default class SearchFormView extends View {
     constructor() {
-        super(qs("#search-form-view")); //element의 id를 갖고온다.
+        super(qs("#search-form-view")); //element id를 갖고온다.
 
         this.resetElement = qs("[type=reset]", this.element);
         this.showResetButton(false);

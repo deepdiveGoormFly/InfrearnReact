@@ -1,7 +1,7 @@
 import Controller from "./Controller.js";
 import Store from "./store.js";
 import storage from "./storage.js";
-import SearchFormView from "./views/SearchFormView";
+import SearchFormView from "./views/SearchFormView.js";
 
 const tag = '[main]';
 document.addEventListener("DOMContentLoaded", main);
