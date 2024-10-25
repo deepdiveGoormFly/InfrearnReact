@@ -24,6 +24,7 @@ export default class SearchFormView extends View {
         on(this.inputElement, "keyup", () => this.handleKeyUp());
         this.on("submit", (event) => this.handleSubmit(event));
         // todo
+        this.on("reset", () => this.handleReset());
     }
 
     handleKeyUp() {
@@ -31,6 +32,9 @@ export default class SearchFormView extends View {
         const {value} = this.inputElement;
         this.showResetButton(value.length > 0);
         // todo
+        if (value.length === 0) {
+            this.emit("@reset", {value});
+        }
     }
 
     handleSubmit(event) {
@@ -38,7 +42,12 @@ export default class SearchFormView extends View {
         console.log(tag, "handleSubmit");
         // todo 검색 결과에 관한 로직은 다른 페이지로 위임하기
         const {value} = this.inputElement;
-        // custom event이기 때문에 @를 붙였다.
         this.emit("@submit", {value});
+    }
+
+    handleReset() {
+        console.log(tag, "handleReset");
+        this.inputElement.value = "";
+
     }
 }
