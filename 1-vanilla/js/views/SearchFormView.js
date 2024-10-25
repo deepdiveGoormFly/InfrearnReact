@@ -35,5 +35,9 @@ export default class SearchFormView extends View {
     handleSubmit(event) {
         event.preventDefault(); // browser 기본 event 동작 막기
         console.log(tag, "handleSubmit");
+        // todo 검색 결과에 관한 로직은 다른 페이지로 위임하기
+        const {value} = this.inputElement;
+        // custom event이기 때문에 @를 붙였다.
+        this.emit("@submit", {value});
     }
 }
