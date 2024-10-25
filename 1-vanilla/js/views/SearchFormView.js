@@ -22,6 +22,7 @@ export default class SearchFormView extends View {
 
     bindEvent() {
         on(this.inputElement, "keyup", () => this.handleKeyUp());
+        on(this.element, "submit", (event) => this.handleSubmit(event));
     }
 
     handleKeyUp() {
@@ -29,5 +30,10 @@ export default class SearchFormView extends View {
         console.log(tag, "handleKeyUp", this.inputElement.value);
         const {value} = this.inputElement;
         this.showResetButton(value.length > 0);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault(); // browser 기본 event 동작 막기
+        console.log(tag, "handleSubmit");
     }
 }
