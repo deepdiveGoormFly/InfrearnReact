@@ -5,7 +5,19 @@ export default class Controller {
     console.log(tag);
     this.store = store;
 
-    // TODO
     this.searchFormView = searchFormView;
+
+    // TODO
+    this.subscribeViewEvents();
+  }
+
+  subscribeViewEvents() {
+    this.searchFormView.on("@submit", event => this.search(event));
+  }
+
+  search(event) {
+    // console.log(tag, event);
+    console.log(tag, event, event.detail);
+    // console.log(tag, event.detail);
   }
 }
