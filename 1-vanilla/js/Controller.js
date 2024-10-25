@@ -19,15 +19,16 @@ export default class Controller {
 
   search(keyword) {
     console.log(tag, keyword);
-    // TODO 검색 결과를 위한 view를 만들 때 추가
+    // 검색 결과를 위한 view를 만들 때 추가
     this.store.search(keyword);
     this.render();
   }
 
   reset() {
     console.log(tag, "reset");
-    // TODO x버튼 클릭 시 검색 결과도 없애야 함
+    // x버튼 클릭 시 검색 결과도 없애야 함
     this.store.searchKeyword = "";
+    this.store.searchResult = [];
     this.searchResultView.hide();
   }
 
