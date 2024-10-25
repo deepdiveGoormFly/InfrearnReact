@@ -32,6 +32,7 @@ export default class Controller {
     this.store.searchKeyword = "";
     this.store.searchResult = [];
     this.searchResultView.hide();
+    this.tabView.show();
   }
 
   render() {
@@ -41,7 +42,7 @@ export default class Controller {
       this.tabView.hide();
       return ;
     }
-    this.searchResultView.hide();
     this.tabView.show();
+    this.searchResultView.hide();
   }
 }
