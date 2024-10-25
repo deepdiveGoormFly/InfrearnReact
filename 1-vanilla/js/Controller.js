@@ -13,6 +13,7 @@ export default class Controller {
   subscribeViewEvents() {
     this.searchFormView.on("@submit", event => this.search(event.detail.value))
         .on("@reset", () => this.reset());
+    // Method chaining 걸려 있다 : on() 메소드는 return this를 하기 때문에 위와 같이 사용 가능
   }
 
   search(keyword) {

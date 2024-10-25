@@ -11,7 +11,6 @@ function main() {
   const store = new Store(storage);
 
   const views = {
-    // TODO
     searchFormView: new SearchFormView(),
   };
 
