@@ -11,13 +11,17 @@ export default class Controller {
   }
 
   subscribeViewEvents() {
-    this.searchFormView.on("@submit", event => this.search(event.detail.value));
-    this.searchFormView.on("@reset", event => this.search(""));
-    // todo
+    this.searchFormView.on("@submit", event => this.search(event.detail.value))
+        .on("@reset", () => this.reset());
   }
 
   search(keyword) {
     console.log(tag, keyword);
     // TODO 검색 결과를 위한 view를 만들 때 추가
+  }
+
+  reset() {
+    console.log(tag);
+    
   }
 }

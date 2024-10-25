@@ -24,7 +24,7 @@ export default class SearchFormView extends View {
         on(this.inputElement, "keyup", () => this.handleKeyUp());
         this.on("submit", (event) => this.handleSubmit(event));
         // todo
-        this.on("reset", () => this.handleReset());
+        on(this.resetElement, "click", () => this.handleReset());
     }
 
     handleKeyUp() {
@@ -32,9 +32,6 @@ export default class SearchFormView extends View {
         const {value} = this.inputElement;
         this.showResetButton(value.length > 0);
         // todo
-        if (value.length === 0) {
-            this.emit("@reset", {value});
-        }
     }
 
     handleSubmit(event) {
@@ -47,7 +44,6 @@ export default class SearchFormView extends View {
 
     handleReset() {
         console.log(tag, "handleReset");
-        this.inputElement.value = "";
-
+        this.emit("@reset");
     }
 }
