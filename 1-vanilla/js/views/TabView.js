@@ -1,26 +1,29 @@
 import View from "./View.js";
-import {qs} from "../helpers.js";
+import {qs, qsAll} from "../helpers.js";
 
-const TapType = {
+export const TabType = {
     KEYWORD: 'KEYWORD',
     HISTORY: 'HISTORY'
 }
 
 const TabLabel = {
-    [TapType.KEYWORD]: '추천 검색어',
-    [TapType.HISTORY]: '최근 검색어'
+    [TabType.KEYWORD]: '추천 검색어',
+    [TabType.HISTORY]: '최근 검색어'
 }
 
 export default class TabView extends View{
     constructor(props){
         super(qs("#tab-view"));
 
-        // TODO 동적으로 구현
         this.template = new Template();
     }
 
-    show() {
+    show(selectedTab) {
         this.element.innerHTML = this.template.getTabList();
+        // todo 추천 검색어를 기본으로 선택하게끔 함
+        qsAll("li", this.element).forEach(li => {
+            li.className = li.dataset.tab === selectedTab ? "active" : "";
+        })
 
         super.show();
     }
@@ -30,7 +33,7 @@ export default class TabView extends View{
 class Template {
     getTabList() {
         return `
-            <ul class="tabs">${Object.values(TapType)
+            <ul class="tabs">${Object.values(TabType)
                 .map(tabType => ({tabType, tabLabel: TabLabel[tabType]}))
                 .map(this._getTab)
                 .join("")}

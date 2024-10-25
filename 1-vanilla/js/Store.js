@@ -1,3 +1,4 @@
+import { TabType } from "./views/TabView.js";
 const tag = "[store]";
 
 export default class Store {
@@ -10,6 +11,8 @@ export default class Store {
     // 검색 결과 초기화
     this.searchKeyword = "";
     this.searchResult = [];
+    // todo
+    this.selectedTab = TabType.KEYWORD;
   }
 
   // 검색 결과를 productData에 포함되어 있는지 체크하는 부분
