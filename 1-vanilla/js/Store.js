@@ -34,7 +34,7 @@ export default class Store {
   }
 
   _sortHistory(history1, history2) {
-    return history2.date > history1.date;
+    return history2.date - history1.date;
   }
 
   removeHistory(keyword) {
@@ -45,6 +45,17 @@ export default class Store {
 
   // helper.js 의 유틸리티를 활용해 추가하기
   addHistory(keyword) {
-    this.storage.historyData.push({id:createNextId(this.storage.historyData), keyword: keyword, date: new Date()});
+    keyword = keyword.trim();
+    if (!keyword) return;
+
+    const hasHistory = this.storage.historyData.some(history => history.keyword === keyword);
+    if (hasHistory) {
+      this.removeHistory(keyword);
+    }
+    const id = createNextId(this.storage.historyData);
+    const date = new Date();
+
+    this.storage.historyData.push({id, keyword, date});
+    this.storage.historyData = this.storage.historyData.sort(this._sortHistory);
   }
 }
