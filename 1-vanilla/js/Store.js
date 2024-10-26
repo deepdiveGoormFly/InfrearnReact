@@ -1,4 +1,5 @@
 import { TabType } from "./views/TabView.js";
+import {createNextId, createPastDate, formatRelativeDate} from "./helpers.js";
 const tag = "[store]";
 
 export default class Store {
@@ -19,7 +20,8 @@ export default class Store {
     this.searchKeyword = keyword;
     this.searchResult = this.storage.productData.filter(product =>
         product.name.includes(keyword));
-    // TODO
+    // 검색 시 최근 검색어 목록에 추가
+    this.addHistory(this.searchKeyword);
   }
 
   getKeywordList(){
@@ -41,5 +43,8 @@ export default class Store {
     );
   }
 
-  // TODO
+  // helper.js 의 유틸리티를 활용해 추가하기
+  addHistory(keyword) {
+    this.storage.historyData.push({id:createNextId(this.storage.historyData), keyword: keyword, date: new Date()});
+  }
 }
