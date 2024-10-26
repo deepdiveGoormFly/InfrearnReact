@@ -19,6 +19,7 @@ export default class Store {
     this.searchKeyword = keyword;
     this.searchResult = this.storage.productData.filter(product =>
         product.name.includes(keyword));
+    // TODO
   }
 
   getKeywordList(){
@@ -39,4 +40,6 @@ export default class Store {
         (history) => history.keyword !== keyword
     );
   }
+
+  // TODO
 }
