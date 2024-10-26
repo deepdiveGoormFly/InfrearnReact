@@ -1,5 +1,3 @@
-import {TabType} from "./views/TabView.js";
-
 const tag = "[Controller]";
 
 export default class Controller {

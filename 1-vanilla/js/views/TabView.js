@@ -1,5 +1,5 @@
 import View from "./View.js";
-import {delegate, on, qs, qsAll} from "../helpers.js";
+import {delegate, qs, qsAll} from "../helpers.js";
 
 export const TabType = {
     KEYWORD: 'KEYWORD',
