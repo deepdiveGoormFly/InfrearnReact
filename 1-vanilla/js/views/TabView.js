@@ -1,5 +1,5 @@
 import View from "./View.js";
-import {qs, qsAll} from "../helpers.js";
+import {delegate, on, qs, qsAll} from "../helpers.js";
 
 export const TabType = {
     KEYWORD: 'KEYWORD',
@@ -17,6 +17,7 @@ export default class TabView extends View{
 
         this.template = new Template();
         // TODO EVENT를 BINDING 해주는 작업 진행
+        this.tabBindEvent();
     }
 
     show(selectedTab) {
@@ -29,6 +30,13 @@ export default class TabView extends View{
         super.show();
     }
 
+    tabBindEvent() {
+        delegate(this.element, "click", "li", event => this.handleClick(event));
+    }
+
+    handleClick(event) {
+        console.log(event.target);
+    }
 }
 
 class Template {
