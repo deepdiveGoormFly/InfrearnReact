@@ -24,7 +24,8 @@ export default class Controller {
     // VIEW의 이벤트를 수신하는 부분
     this.tabView.on("@changeTab", event => this.change(event.detail.tabValue));
     this.keywordListView.on("@click", event => this.search(event.detail.value));
-    this.historyListView.on("@click", event => this.search(event.detail.value));
+    this.historyListView.on("@click", event => this.search(event.detail.value))
+        .on("@remove", event => this.removeHistory(event.detail.value));
   }
 
   search(keyword) {
@@ -77,5 +78,10 @@ export default class Controller {
     this.historyListView.hide();
 
     this.searchResultView.show(this.store.searchResult);
+  }
+
+  removeHistory(keyword) {
+    this.store.removeHistory(keyword);
+    this.render();
   }
 }
