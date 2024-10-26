@@ -6,7 +6,6 @@ export default class keywordListView extends View{
         super(qs("#keyword-list-view"));
 
         this.template = new Template();
-        //todo
         this.bindEvents();
     }
     show(data = []) {
@@ -18,11 +17,9 @@ export default class keywordListView extends View{
     }
 
     bindEvents() {
-        //todo
         delegate(this.element, "click", "li", event => this.handleClick(event));
     }
     handleClick(event) {
-        //todo
         const value = event.target.dataset.keyword;
         console.log(event.target.dataset.keyword);
         this.emit("@click", {value});

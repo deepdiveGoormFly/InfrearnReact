@@ -22,7 +22,7 @@ export default class Store {
   }
 
   getKeywordList(){
-    // todo 추천 검색어 목록을 storage에서 찾아서 반환하는 메소드
+    //추천 검색어 목록을 storage에서 찾아서 반환하는 메소드
     return this.storage.keywordData;
   }
 }
