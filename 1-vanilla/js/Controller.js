@@ -17,6 +17,7 @@ export default class Controller {
     this.searchFormView.on("@submit", event => this.search(event.detail.value))
         .on("@reset", () => this.reset());
     // Method chaining 걸려 있다 : on() 메소드는 return this를 하기 때문에 위와 같이 사용 가능
+    // TODO VIEW의 이벤트를 수신하는 부분
   }
 
   search(keyword) {

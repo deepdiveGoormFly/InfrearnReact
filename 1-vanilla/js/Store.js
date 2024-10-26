@@ -11,7 +11,6 @@ export default class Store {
     // 검색 결과 초기화
     this.searchKeyword = "";
     this.searchResult = [];
-    // todo
     this.selectedTab = TabType.KEYWORD;
   }
 

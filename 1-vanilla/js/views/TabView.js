@@ -16,11 +16,12 @@ export default class TabView extends View{
         super(qs("#tab-view"));
 
         this.template = new Template();
+        // TODO EVENT를 BINDING 해주는 작업 진행
     }
 
     show(selectedTab) {
         this.element.innerHTML = this.template.getTabList();
-        // todo 추천 검색어를 기본으로 선택하게끔 함
+        // 추천 검색어를 기본으로 선택하게끔 함
         qsAll("li", this.element).forEach(li => {
             li.className = li.dataset.tab === selectedTab ? "active" : "";
         })
