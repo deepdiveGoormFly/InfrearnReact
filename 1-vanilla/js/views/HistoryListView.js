@@ -1,5 +1,5 @@
 import KeywordListView from './KeywordListView.js';
-import { formatRelativeDate, qs } from "../helpers.js";
+import {delegate, formatRelativeDate, qs} from "../helpers.js";
 
 export default class HistoryListView extends KeywordListView {
     constructor() {
@@ -7,12 +7,16 @@ export default class HistoryListView extends KeywordListView {
     }
 
     bindEvents() {
-        // TODO
+        // x버튼 클릭에 대한 binding 추가
+        delegate(this.element, "click", "button.btn-remove", event => this.handleClickRemoveButton(event));
         super.bindEvents();
     }
 
     handleClickRemoveButton(event) {
-        // TODO
+        // 부모 element의 dataset.keyword를 같이 전달
+        // console.log(event.target.parentElement.dataset.keyword);
+        const value = event.target.parentElement.dataset.keyword;
+        this.emit("@remove", {value})
     }
 }
 class Template {
@@ -35,7 +39,7 @@ class Template {
             <li data-keyword=${keyword}>
                 ${keyword}
                 <span class="date">${formatRelativeDate(date)}</span>
-                <button id=${id} class="btn-remove"></button>
+                <button class="btn-remove"></button>
             </li>
         `;
     }
