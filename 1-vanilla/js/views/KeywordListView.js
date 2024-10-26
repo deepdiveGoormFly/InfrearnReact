@@ -10,7 +10,7 @@ export default class keywordListView extends View{
     show(data = []) {
         console.log(data);
         this.element.innerHTML = data.length > 0
-            ? this.template.getList()
+            ? this.template.getList(data)
             : this.template.getEmptyMessage();
         super.show();
     }
