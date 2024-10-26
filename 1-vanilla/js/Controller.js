@@ -22,6 +22,7 @@ export default class Controller {
     // Method chaining 걸려 있다 : on() 메소드는 return this를 하기 때문에 위와 같이 사용 가능
     // VIEW의 이벤트를 수신하는 부분
     this.tabView.on("@changeTab", event => this.change(event.detail.tabValue));
+    this.keywordListView.on("@click", event => this.search(event.detail.value));
   }
 
   search(keyword) {
