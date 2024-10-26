@@ -21,9 +21,9 @@ class Template {
     getList(data = []) {
         return `
             <ul class="list">
-                ${data.map(this._getItem().join(""))}
+                ${data.map(this._getItem).join("")}
             </ul>
-        `
+        `;
     }
 
     getEmptyMessage() {

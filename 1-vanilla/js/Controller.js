@@ -1,3 +1,4 @@
+import {TabType} from "./views/TabView.js";
 
 const tag = "[Controller]";
 
@@ -41,13 +42,18 @@ export default class Controller {
   render() {
     // controller가 관리하는 view를 이용해 화면에 출력하는 기능
     if (this.store.searchKeyword.length > 0) {
-      this.searchResultView.show(this.store.searchResult);
-      this.keywordListView.show();
-      this.tabView.hide();
-      return ;
+      return this.renderSearchResult();
     }
+
     this.tabView.show(this.store.selectedTab);
-    this.keywordListView.hide();
+    if (this.store.selectedTab === TabType.KEYWORD) {
+      this.keywordListView.show(this.store.getKeywordList());
+    } else if(this.store.selectedTab === TabType.HISTORY) {
+      this.keywordListView.hide();
+    } else {
+      throw "사용할 수 없는 탭입니다.";
+    }
+
     this.searchResultView.hide();
   }
 
@@ -57,5 +63,11 @@ export default class Controller {
     this.render();
     // console.log(this.store.selectedTab);
     // this.tabView.show(this.store.selectedTab);
+  }
+  renderSearchResult() {
+    this.tabView.hide();
+    this.keywordListView.hide();
+
+    this.searchResultView.show(this.store.searchResult);
   }
 }
