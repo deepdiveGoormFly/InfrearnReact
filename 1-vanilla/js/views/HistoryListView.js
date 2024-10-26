@@ -1,9 +1,18 @@
 import KeywordListView from './KeywordListView.js';
-import {formatRelativeDate, qs} from "../helpers.js";
+import { formatRelativeDate, qs } from "../helpers.js";
 
 export default class HistoryListView extends KeywordListView {
     constructor() {
         super(qs("#history-list-view"), new Template());
+    }
+
+    bindEvents() {
+        // TODO
+        super.bindEvents();
+    }
+
+    handleClickRemoveButton(event) {
+        // TODO
     }
 }
 class Template {
@@ -26,7 +35,7 @@ class Template {
             <li data-keyword=${keyword}>
                 ${keyword}
                 <span class="date">${formatRelativeDate(date)}</span>
-                <button class="btn-remove"></button>
+                <button id=${id} class="btn-remove"></button>
             </li>
         `;
     }
