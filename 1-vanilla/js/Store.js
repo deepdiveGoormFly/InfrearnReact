@@ -20,4 +20,9 @@ export default class Store {
     this.searchResult = this.storage.productData.filter(product =>
         product.name.includes(keyword));
   }
+
+  getKeywordList(){
+    // todo 추천 검색어 목록을 storage에서 찾아서 반환하는 메소드
+    return this.storage.keywordData;
+  }
 }

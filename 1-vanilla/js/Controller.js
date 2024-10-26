@@ -1,13 +1,15 @@
+
 const tag = "[Controller]";
 
 export default class Controller {
-  constructor(store, {searchFormView, searchResultView, tabView}) {
+  constructor(store, {searchFormView, searchResultView, tabView, keywordListView}) {
     console.log(tag);
     this.store = store;
 
     this.searchFormView = searchFormView;
     this.searchResultView = searchResultView;
     this.tabView = tabView;
+    this.keywordListView = keywordListView;
 
     this.subscribeViewEvents();
     this.render();
@@ -40,10 +42,12 @@ export default class Controller {
     // controller가 관리하는 view를 이용해 화면에 출력하는 기능
     if (this.store.searchKeyword.length > 0) {
       this.searchResultView.show(this.store.searchResult);
+      this.keywordListView.show();
       this.tabView.hide();
       return ;
     }
     this.tabView.show(this.store.selectedTab);
+    this.keywordListView.hide();
     this.searchResultView.hide();
   }
 
