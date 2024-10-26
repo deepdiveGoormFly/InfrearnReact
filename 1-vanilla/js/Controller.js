@@ -20,7 +20,7 @@ export default class Controller {
         .on("@reset", () => this.reset());
     // Method chaining 걸려 있다 : on() 메소드는 return this를 하기 때문에 위와 같이 사용 가능
     // TODO VIEW의 이벤트를 수신하는 부분
-    this.tabView.on("@changeTab", event => this.change(event.detail.value));
+    this.tabView.on("@changeTab", event => this.change(event.detail.tabValue));
   }
 
   search(keyword) {
@@ -50,9 +50,10 @@ export default class Controller {
   }
 
   change(tabValue) {
-    // console.log(tag, tabValue);
+    console.log(tag, "changeTab", tabValue);
     this.store.selectedTab = tabValue;
+    this.render();
     // console.log(this.store.selectedTab);
-    this.tabView.show(this.store.selectedTab);
+    // this.tabView.show(this.store.selectedTab);
   }
 }
