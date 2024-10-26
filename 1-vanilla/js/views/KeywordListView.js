@@ -2,10 +2,11 @@ import View from "./View.js";
 import {delegate, qs} from "../helpers.js";
 
 export default class keywordListView extends View{
-    constructor(){
-        super(qs("#keyword-list-view"));
+    // todo 외부에서 element를 주입 받도록 한다.
+    constructor(element = qs("#keyword-list-view"), template = new Template()){
+        super(element);
 
-        this.template = new Template();
+        this.template = template;
         this.bindEvents();
     }
     show(data = []) {
