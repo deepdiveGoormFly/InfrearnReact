@@ -12,6 +12,7 @@ export default class Store {
     this.searchKeyword = "";
     this.searchResult = [];
     this.selectedTab = TabType.KEYWORD;
+    this.selectedKeyword = "";
   }
 
   // 검색 결과를 productData에 포함되어 있는지 체크하는 부분
