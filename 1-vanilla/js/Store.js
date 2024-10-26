@@ -12,7 +12,6 @@ export default class Store {
     this.searchKeyword = "";
     this.searchResult = [];
     this.selectedTab = TabType.KEYWORD;
-    this.selectedKeyword = "";
   }
 
   // 검색 결과를 productData에 포함되어 있는지 체크하는 부분
@@ -25,5 +24,13 @@ export default class Store {
   getKeywordList(){
     //추천 검색어 목록을 storage에서 찾아서 반환하는 메소드
     return this.storage.keywordData;
+  }
+
+  getHistoryList() {
+    return this.storage.historyData.sort(this._sortHistory);
+  }
+
+  _sortHistory(history1, history2) {
+    return history2.date > history1.date;
   }
 }
