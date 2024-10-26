@@ -16,7 +16,7 @@ export default class TabView extends View{
         super(qs("#tab-view"));
 
         this.template = new Template();
-        // TODO EVENT를 BINDING 해주는 작업 진행
+        // EVENT를 BINDING 해주는 작업 진행
         this.tabBindEvent();
     }
 
