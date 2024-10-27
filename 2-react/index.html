@@ -22,14 +22,11 @@
 
 <script type="text/babel">
     // const element = React.createElement("h1", null, "Hello world");
-    // ReactDOM.render(element, document.querySelector("#app"));
+    const element = <h1>Hello world</h1>;
+    ReactDOM.render(element, document.querySelector("#app"));
 
-    const h1 = document.createElement("h1") // 1
-    const header = document.createElement("header") // 2
-    header.appendChild(h1) // 3
 
-    document.body.appendChild(header);
-    // appendChild() 함수를 자주 호출하면 코드를 읽기 어려워짐 (UI가늠이 어려움)
+
 </script>
 </body>
 </html>
