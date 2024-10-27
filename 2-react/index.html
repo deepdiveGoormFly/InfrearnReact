@@ -22,14 +22,8 @@
 
 <script type="text/babel">
     const element = React.createElement("h1", null, "Hello world");
-    console.log("react", element);
-    // ReactDOM.render(element, document.querySelector("#app"));
+    ReactDOM.render(element, document.querySelector("#app"));
 
-    // document.body.innerHTML = '<p>Hello world</p>';
-    const p = document.createElement('p');
-    console.log("dom", p);
-    p.textContent = "Hello World";
-    document.body.appendChild(p);
 </script>
 </body>
 </html>
