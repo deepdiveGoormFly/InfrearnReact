@@ -3,10 +3,19 @@
 // 코드는 모듈별로 구분해서 저장하기 때문에 import해서 사용할 예정
 // [헤더 구현]
 const element = (
-    <header>
-        <h2 className="container">검색</h2>
-    </header>
-);
+        <>
+            <header>
+                <h2 className="container">검색</h2>
+            </header>
+            <div className="container">
+                <form id="search-form-view">
+                    <input type="text" placeholder="검색어를 입력하세요" autoFocus/>
+                    <button type="reset" className="btn-reset"></button>
+                </form>
+            </div>
+        </>
+    );
+
 ReactDOM.render(element, document.querySelector("#app"));
 
 // HTML attribute는 소문자만 사용
