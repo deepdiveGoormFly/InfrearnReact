@@ -1,3 +1,5 @@
+import store from "./js/Store.js";
+
 class App extends React.Component {
     constructor() {
         super();
@@ -19,6 +21,17 @@ class App extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log("TODO : handleSubmit", this.state.searchKeyword);
+        // if (this.state.searchKeyword.length > 0) {
+        //     this.state.searchResult.push(this.state.searchKeyword);
+        // }
+        // console.log("TODO : handleSubmit", this.state.searchResult);
+        if (this.state.searchKeyword.length > 0) {
+            this.setState({searchResult: [
+                    this.state.searchKeyword,
+                ]}, () => {
+                console.log("TODO : handleSubmit", this.state.searchResult);
+            });
+        }
     }
 
     handleReset() {
@@ -28,6 +41,10 @@ class App extends React.Component {
             // callback function
             console.log("TODO : handleReset", this.state.searchKeyword);
         })
+    }
+    search(searchKeyword) {
+        const searchResult = store.search(searchKeyword);
+        this.setState({ searchResult });
     }
 
     render() {
@@ -53,14 +70,20 @@ class App extends React.Component {
                     </form>
                     <div className="content">
                         {this.state.searchResult.length > 0 ? (
-                            <div>TODO : 검색 결과 목록 표시하기</div>
+                            <ul className="result">
+                                {this.state.searchResult.map(item => {
+                                    return (
+                                        <li key={item} className="result-item">
+                                            <img src={item.imageUrl} alt={item.name} />
+                                            <p>{item.name}</p>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                            // <div>TODO : 검색 결과 목록 표시하기</div>
                         ) : (
                             <div className="empty-box"> 검색 결과가 없습니다.</div>
                         )}
-                        <div id="tab-view"></div>
-                        <div id="keyword-list-view"></div>
-                        <div id="history-list-view"></div>
-                        <div id="search-result-view"></div>
                     </div>
                 </div>
             </>
