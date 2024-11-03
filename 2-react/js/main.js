@@ -8,15 +8,19 @@ class App extends React.Component {
     }
 
     handleChangeInput(event) {
-        this.setState({searchKeyword: event.target.value})
-        console.log("searchKeyword : ",this.state.searchKeyword);
+        const searchKeyword = event.target.value;
+        if (searchKeyword.length <= 0) {
+            return this.handleReset();
+        }
+        this.setState({searchKeyword: event.target.value});
     }
+
     handleSubmit(event) {
         event.preventDefault();
         console.log("TODO : handleSubmit", this.state.searchKeyword);
     }
-    handleReset(event) {
-        event.preventDefault();
+
+    handleReset() {
         this.setState(() => { // 비동기로 동작하기 때문에 callback 함수를 호출하기
             return {searchKeyword: ""};
         }, () => {
@@ -34,7 +38,7 @@ class App extends React.Component {
                 </header>
                 <div className="container">
                     <form id="search-form-view" onSubmit={(event) => this.handleSubmit(event)}
-                            onReset={(event) => this.handleReset(event)}>
+                          onReset={() => this.handleReset()}>
                         <input type="text"
                                placeholder="검색어를 입력하세요"
                                autoFocus
@@ -52,7 +56,7 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App />, document.querySelector("#app"));
+ReactDOM.render(<App/>, document.querySelector("#app"));
 // ReactDOM.render(element, document.querySelector("#app"));
 
 // HTML attribute는 소문자만 사용
