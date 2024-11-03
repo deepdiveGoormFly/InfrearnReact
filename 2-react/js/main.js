@@ -33,7 +33,7 @@ class App extends React.Component {
                                onChange={(event) => this.handleChangeInput(event)}
                         />
                         {/*<button type="reset" className="btn-reset"></button>*/}
-                        {resetButton}
+                        {this.state.searchKeyword.length > 0 ? resetButton : null}
                     </form>
                 </div>
             </>
