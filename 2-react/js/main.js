@@ -15,6 +15,11 @@ class App extends React.Component {
         event.preventDefault();
         console.log("TODO : handleSubmit", this.state.searchKeyword);
     }
+    handleReset(event) {
+        event.preventDefault();
+        console.log("TODO : handleReset");
+        this.setState({searchKeyword: ""});
+    }
 
     render() {
 
@@ -24,7 +29,8 @@ class App extends React.Component {
                     <h2 className="container">검색</h2>
                 </header>
                 <div className="container">
-                    <form id="search-form-view" onSubmit={(event) => this.handleSubmit(event)}>
+                    <form id="search-form-view" onSubmit={(event) => this.handleSubmit(event)}
+                            onReset={(event) => this.handleReset(event)}>
                         <input type="text"
                                placeholder="검색어를 입력하세요"
                                autoFocus
