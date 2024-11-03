@@ -77,7 +77,6 @@ class App extends React.Component {
                                     )
                                 })}
                             </ul>
-                            // <div>TODO : 검색 결과 목록 표시하기</div>
                         ) : (
                             <div className="empty-box"> 검색 결과가 없습니다.</div>
                         )}
