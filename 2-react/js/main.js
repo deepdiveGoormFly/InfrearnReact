@@ -21,15 +21,12 @@ class App extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log("TODO : handleSubmit", this.state.searchKeyword);
-        // if (this.state.searchKeyword.length > 0) {
-        //     this.state.searchResult.push(this.state.searchKeyword);
-        // }
-        // console.log("TODO : handleSubmit", this.state.searchResult);
         if (this.state.searchKeyword.length > 0) {
             this.setState({searchResult: [
                     this.state.searchKeyword,
                 ]}, () => {
                 console.log("TODO : handleSubmit", this.state.searchResult);
+                this.search(this.state.searchKeyword);
             });
         }
     }
@@ -73,7 +70,7 @@ class App extends React.Component {
                             <ul className="result">
                                 {this.state.searchResult.map(item => {
                                     return (
-                                        <li key={item} className="result-item">
+                                        <li key={item.id} className="result-item">
                                             <img src={item.imageUrl} alt={item.name} />
                                             <p>{item.name}</p>
                                         </li>
