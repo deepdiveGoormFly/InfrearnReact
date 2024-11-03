@@ -13,11 +13,6 @@ class App extends React.Component {
     }
 
     render() {
-        let resetButton = null;
-
-        if (this.state.searchKeyword.length > 0) {
-            resetButton =
-        }
 
         return (
             <>
