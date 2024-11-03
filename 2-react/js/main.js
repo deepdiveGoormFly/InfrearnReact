@@ -68,9 +68,9 @@ class App extends React.Component {
                     <div className="content">
                         {this.state.searchResult.length > 0 ? (
                             <ul className="result">
-                                {this.state.searchResult.map(item => {
+                                {this.state.searchResult.map((item, index) => {
                                     return (
-                                        <li key={item.id} className="result-item">
+                                        <li key={index} className="result-item">
                                             <img src={item.imageUrl} alt={item.name} />
                                             <p>{item.name}</p>
                                         </li>
