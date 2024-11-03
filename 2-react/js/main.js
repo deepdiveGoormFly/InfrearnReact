@@ -7,6 +7,7 @@ class App extends React.Component {
         this.state = {
             searchKeyword: "", // 입력값을 나타내는 상태
             searchResult: [], // 겸색 결과
+            submitted: false, // 검색을 했는지 여부 확인
         };
     }
 
@@ -33,15 +34,19 @@ class App extends React.Component {
 
     handleReset() {
         this.setState(() => { // 비동기로 동작하기 때문에 callback 함수를 호출하기
-            return {searchKeyword: ""};
+            return {searchKeyword: "", submitted: false};
         }, () => {
             // callback function
             console.log("TODO : handleReset", this.state.searchKeyword);
+            console.log("TODO : submitted", this.state.submitted);
         })
     }
     search(searchKeyword) {
         const searchResult = store.search(searchKeyword);
-        this.setState({ searchResult });
+        this.setState({
+            searchResult,
+            submitted: true
+        });
     }
 
     render() {
@@ -66,7 +71,7 @@ class App extends React.Component {
                         )}
                     </form>
                     <div className="content">
-                        {this.state.searchResult.length > 0 ? (
+                        {this.state.submitted && ( this.state.searchResult.length > 0 ? (
                             <ul className="result">
                                 {this.state.searchResult.map((item, index) => {
                                     return (
@@ -79,7 +84,7 @@ class App extends React.Component {
                             </ul>
                         ) : (
                             <div className="empty-box"> 검색 결과가 없습니다.</div>
-                        )}
+                        ))}
                     </div>
                 </div>
             </>
