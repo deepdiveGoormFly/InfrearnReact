@@ -17,8 +17,12 @@ class App extends React.Component {
     }
     handleReset(event) {
         event.preventDefault();
-        console.log("TODO : handleReset");
-        this.setState({searchKeyword: ""});
+        this.setState(() => { // 비동기로 동작하기 때문에 callback 함수를 호출하기
+            return {searchKeyword: ""};
+        }, () => {
+            // callback function
+            console.log("TODO : handleReset", this.state.searchKeyword);
+        })
     }
 
     render() {
