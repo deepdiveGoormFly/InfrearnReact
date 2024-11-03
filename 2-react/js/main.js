@@ -34,11 +34,12 @@ class App extends React.Component {
 
     handleReset() {
         this.setState(() => { // 비동기로 동작하기 때문에 callback 함수를 호출하기
-            return {searchKeyword: "", submitted: false};
+            return {searchKeyword: "", submitted: false, searchResult: []};
         }, () => {
             // callback function
-            console.log("TODO : handleReset", this.state.searchKeyword);
-            console.log("TODO : submitted", this.state.submitted);
+            // console.log("TODO : handleReset", this.state.searchKeyword);
+            // console.log("TODO : handleResult", this.state.searchResult);
+            // console.log("TODO : submitted", this.state.submitted);
         })
     }
     search(searchKeyword) {
